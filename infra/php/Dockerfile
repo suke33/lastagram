@@ -12,6 +12,12 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath
 
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install npm@latest -g
+
+RUN apt-get update && apt-get -y install vim
+
 COPY ./php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /work
