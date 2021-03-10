@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::group(['middleware' => 'auth'], function() {
+
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
+Route::get('/user/detail', [PostController::class, 'show'])->name('user.detail');
+
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+
+// マークアップ用のルーティング
+// Route::get('/mark/posts', function() {
+//     return view('admin.home');
+// });
+// Route::get('/mark/posts/create', function() {
+//     return view('admin.create');
+// });
+// Route::get('/mark/posts/detail', function() {
+//     return view('admin.detail');
+// });
