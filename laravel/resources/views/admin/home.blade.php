@@ -58,25 +58,6 @@
             </div>
             <!----- プロフィール END ----->
 
-            <!----- プロフィール 小さい画面幅 ----->
-            <div class="profile-sp">
-                <div class="count">
-                    <ul>
-                        <li>
-                            <p><span class="bold">投稿</span><br class="sp"><span class="black">100</span><br class="sp"></span>件</p>
-                        </li>
-                        <li>
-                            <p><span class="bold">フォロー中</span><br class="sp"><span class="black">100</span><br class="sp">人</p>
-                        </li>
-                        <li>
-                            <p><span class="bold">フォロワー</span><br class="sp"><span class="black">100</span><br class="sp">人</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!----- プロフィール END ----->
-
             <!----- 投稿 ----->
             <div id="post">
                 <div class="post-wrapper">
