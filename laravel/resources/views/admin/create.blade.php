@@ -18,15 +18,11 @@
             <nav>
                 <ul>
                     <li>
-                        <h1><a href=""><img src="{{ asset('image/logo.svg') }}" alt="lastagram" class="logo"></a></h1>
+                        <h1><a href=""><img src="{{ asset('images/logo.svg') }}" alt="lastagram" class="logo"></a></h1>
                     </li>
                     <!----- ホーム画面 ----->
-                    <li><a href=""><i class="fas fa-plus-square"></i></a></li>
-                    <!----- 新規投稿画面へ ----->
-                    <li><a href=""><i class="fas fa-user"></i></a></li>
+                    <li><a href="{{route('user.detail')}}"><i class="fas fa-user"></i></a></li>
                     <!----- プロフィール詳細画面へ ----->
-                    <li><a href=""><i class="fas fa-sign-out-alt"></i></a></li>
-                    <!----- ログアウト ----->
                 </ul>
             </nav>
         </header>
@@ -41,21 +37,39 @@
                     <div class="post">
                         <div class="post-header">
                             <div class="exit">
-                                <a href=""><i class="fas fa-arrow-left"></i></a>
+                                <a href="{{route('post.index')}}"><i class="fas fa-arrow-left"></i></a>
                             </div>
                             <div>
                                 <!----- 投稿するボタン ----->
-                                <div class="btn">
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                                <!-- <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                                <button type="submit" class="btn"><p>投稿する</p></button>
+                                @csrf -->
+                                {{ Form::open(['route' => 'post.store', 'files' => 'true']) }}
+                                {{ Form::submit('投稿する', ['class' => 'btn'])}}
+                                <!-- </form> -->
+                                <!-- <div class="btn">
                                     <a href="">
                                         <p>投稿する</p>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
-                        <a href=""><img src="{{ asset('image/create-img.png') }}" alt="投稿する写真" class="photo"></a>
-                        <div class="comment">
+                        {{ Form::file('image', []) }}
+                        <!-- <a href=""><img src="{{ asset('image/create-img.png') }}" alt="投稿する写真" class="photo"></a> -->
+                        {{ Form::text('comment', null, ['class' => 'comment', 'placeholder' => 'コメントを入力…'])}}
+                        <!-- <div class="comment">
                             <p>コメントを入力…</p>
-                        </div>
+                        </div> -->
+                        {{ Form::close() }}
                     </div>
                     <!----- 投稿ここまで ----->
                 </div>

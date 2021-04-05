@@ -30,11 +30,27 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.democreate');
+        return view('admin.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'image' => 'required',
+            'comment' => 'required|max:500'
+        ]);
+
+        $post = new Post;
+        $post->user_id = Auth::user()->id;
+        $post->image = $request->image;
+        $post->comment = $request->comment;
+        $request->file('image')->store('public');
+        $post->save();
+        return redirect()->route('post.index');
     }
 
     public function show()
     {
-        return view('admin.demodetail');
+        return view('admin.detail');
     }
 }
