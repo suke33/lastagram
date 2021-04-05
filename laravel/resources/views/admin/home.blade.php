@@ -18,13 +18,16 @@
             <nav>
                 <ul>
                     <li>
-                        <h1><a href=""><img src="{{ asset('image/logo.svg') }}" alt="lastagram" class="logo"></a></h1>
+                        <h1><a href=""><img src="{{ asset('images/logo.svg') }}" alt="lastagram" class="logo"></a></h1>
                     </li>
                     <!----- ホーム画面 ----->
                     <li><a href="{{route('post.create')}}"><i class="fas fa-plus-square"></i></a></li>
                     <!----- 新規投稿画面へ ----->
                     <li><a href="{{route('user.detail')}}"><i class="fas fa-user"></i></a></li>
                     <!----- プロフィール詳細画面へ ----->
+                    <li><a href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i></a></li>
+                    <!----- ログアウト ----->
+                
                 </ul>
             </nav>
         </header>
@@ -35,7 +38,7 @@
             <!----- プロフィール 大きい画面幅 ----->
             <div class="profile-pc">
                 <div class="post-prof">
-                    <img src="{{ asset('image/prof-dummy.png') }}">
+                    <img src="{{ asset('images/prof-dummy.png') }}">
                     <h2>{{$user->name}}</h2>
                 </div>
                 <table class="count">
@@ -66,7 +69,7 @@
                         <div class="post-prof">
                             <div class="post-img">
                                 @foreach($posts as $post)
-                                <img src="{{$post->image}}">
+                                <img src="{{ asset('images/prof-dummy.png') }}">
                                 <h2>{{$user->name}}</h2>
                             </div>
                             <div>
@@ -92,7 +95,7 @@
                                 <label for="trigger" class="open-btn"><i class="far fa-trash-alt"></i></label>
                             </div>
                         </div>
-                        <img src="{{ asset('image/post-dummy.png') }}" alt="投稿した写真" class="photo">
+                        <img src="{{ $post->image }}" alt="投稿した写真" class="photo"> 
                         <div class="post-icon">
                             <!----- いいねボタン ----->
                             <div class="like">
@@ -113,15 +116,6 @@
             <!----- 投稿 END ----->
         </article>
         <!----- メインコンテンツ END ----->
-
-        <!-- ログアウト処理の一時保管↓　-->
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                        this.closest('form').submit();">
-                {{ __('Logout') }}
-            </x-jet-dropdown-link>
-        </form>
 
     </main>
 </body>

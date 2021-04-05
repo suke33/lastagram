@@ -21,12 +21,8 @@
                         <h1><a href=""><img src="{{ asset('image/logo.svg') }}" alt="lastagram" class="logo"></a></h1>
                     </li>
                     <!----- ホーム画面 ----->
-                    <li><a href=""><i class="fas fa-plus-square"></i></a></li>
+                    <li><a href="{{route('post.create')}}"><i class="fas fa-plus-square"></i></a></li>
                     <!----- 新規投稿画面へ ----->
-                    <li><a href=""><i class="fas fa-user"></i></a></li>
-                    <!----- プロフィール詳細画面へ ----->
-                    <li><a href=""><i class="fas fa-sign-out-alt"></i></a></li>
-                    <!----- ログアウト ----->
                 </ul>
             </nav>
         </header>
@@ -36,7 +32,7 @@
         <article>
             <div class="post-change">
                 <div class="exit">
-                    <a href=""><i class="fas fa-arrow-left"></i></a>
+                    <a href="{{route('post.index')}}"><i class="fas fa-arrow-left"></i></a>
                 </div>
                 <div class="change-btn">
                     <div>
