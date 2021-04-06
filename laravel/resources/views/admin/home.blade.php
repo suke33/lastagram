@@ -95,7 +95,7 @@
                                 <label for="trigger" class="open-btn"><i class="far fa-trash-alt"></i></label>
                             </div>
                         </div>
-                        <img src="{{ $post->image }}" alt="投稿した写真" class="photo"> 
+                        <img src="{{ asset('storage/images/'.$post->image) }}" alt="投稿した写真" class="photo"> 
                         <div class="post-icon">
                             <!----- いいねボタン ----->
                             <div class="like">

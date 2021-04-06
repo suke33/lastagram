@@ -53,7 +53,7 @@
                                 <!-- <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
                                 <button type="submit" class="btn"><p>投稿する</p></button>
                                 @csrf -->
-                                {{ Form::open(['route' => 'post.store', 'files' => 'true']) }}
+                                {{ Form::open(['route' => 'post.store', 'files' => 'true', 'enctype' => 'multipart/form-data']) }}
                                 {{ Form::submit('投稿する', ['class' => 'btn'])}}
                                 <!-- </form> -->
                                 <!-- <div class="btn">
@@ -63,7 +63,7 @@
                                 </div> -->
                             </div>
                         </div>
-                        {{ Form::file('image', []) }}
+                        {{ Form::file('image', ['name' => 'image', 'accept' => 'image/png']) }}
                         <!-- <a href=""><img src="{{ asset('image/create-img.png') }}" alt="投稿する写真" class="photo"></a> -->
                         {{ Form::text('comment', null, ['class' => 'comment', 'placeholder' => 'コメントを入力…'])}}
                         <!-- <div class="comment">
