@@ -37,14 +37,19 @@ class PostController extends Controller
     {
         $request->validate([
             'image' => 'required',
-            'comment' => 'required|max:500'
+            'comment' => 'required|max:500',
+            'image' => 'required',
         ]);
 
         $post = new Post;
         $post->user_id = Auth::user()->id;
         $post->image = $request->image;
         $post->comment = $request->comment;
-        $request->file('image')->store('public');
+        $post->image = $request->image;
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/images');
+            $post->image = basename($path);
+        }
         $post->save();
         return redirect()->route('post.index');
     }

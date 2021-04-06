@@ -25,8 +25,7 @@ class PostFactory extends Factory
         return [
             'user_id' => User::factory()->has(Post::factory()->count(5)),
             'comment' => $this->faker->realText(200),
-            'image' => 'images/testimage.png',
-            // 'sort' => mt_rand(1, 5)
+            'image' => 'testimage.png',
         ];
     }
 }

@@ -36,9 +36,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
-Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
-Route::post('/posts/create', [PostController::class, 'store'])->name('post.store');
+Route::post('/posts', [PostController::class, 'store'])->name('post.store');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 Route::get('/user/detail', [PostController::class, 'show'])->name('user.detail');
 
 });
