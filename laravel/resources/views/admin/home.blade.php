@@ -61,14 +61,16 @@
             </div>
             <!----- プロフィール END ----->
 
+            <div class="main">
             <!----- 投稿 ----->
+            @foreach($posts as $post)
             <div id="post">
                 <div class="post-wrapper">
                     <!----- 投稿ここから ----->
                     <div class="post">
                         <div class="post-prof">
                             <div class="post-img">
-                                @foreach($posts as $post)
+                                
                                 <img src="{{ asset('images/prof-dummy.png') }}">
                                 <h2>{{$user->name}}</h2>
                             </div>
@@ -108,12 +110,14 @@
                         <div class="comment">
                             <p>{{$post->comment}}</p>
                         </div>
-                        @endforeach
+                        
                     </div>
                     <!----- 投稿ここまで ----->
                 </div>
             </div>
+            @endforeach
             <!----- 投稿 END ----->
+            </div>
         </article>
         <!----- メインコンテンツ END ----->
 

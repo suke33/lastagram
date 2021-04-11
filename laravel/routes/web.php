@@ -47,13 +47,13 @@ Route::get('/user/detail', [PostController::class, 'show'])->name('user.detail')
 
 
 
-// マークアップ用のルーティング
-// Route::get('/mark/posts', function() {
-//     return view('admin.home');
-// });
-// Route::get('/mark/posts/create', function() {
-//     return view('admin.create');
-// });
+ //マークアップ用のルーティング
+//  Route::get('/mark/posts', function() {
+//      return view('admin.home');
+//  });
+//  Route::get('/mark/posts/create', function() {
+//      return view('admin.create');
+//  });
 // Route::get('/mark/posts/detail', function() {
-//     return view('admin.detail');
-// });
+//      return view('admin.detail');
+//  });
