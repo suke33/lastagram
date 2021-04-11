@@ -23,7 +23,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->has(Post::factory()->count(5)),
+            'user_id' => User::inRandomOrder()->first()->id,
             'comment' => $this->faker->realText(200),
             'image' => 'testimage.png',
         ];

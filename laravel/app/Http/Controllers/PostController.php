@@ -58,4 +58,22 @@ class PostController extends Controller
     {
         return view('admin.detail');
     }
+
+    // public function like($id)
+    // {
+    //     Like::create([
+    //         'post_id' => $id,
+    //         'user_id' => Auth::id()
+    //     ]);
+
+    //     return redirect()->route('');
+    // }
+
+    // public function unlike($id)
+    // {
+    //     $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+    //     $like->delete();
+
+    //     return redirect()->route('');
+    // }
 }
