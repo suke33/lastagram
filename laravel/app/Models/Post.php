@@ -12,6 +12,7 @@ class Post extends Model
     protected $fillable = [
         'comment',
         'image',
+        'user_id',
     ];
 
     public function user()

@@ -30,11 +30,50 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.democreate');
+        return view('admin.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'image' => 'required',
+            'comment' => 'required|max:500',
+            'image' => 'required',
+        ]);
+
+        $post = new Post;
+        $post->user_id = Auth::user()->id;
+        $post->image = $request->image;
+        $post->comment = $request->comment;
+        $post->image = $request->image;
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/images');
+            $post->image = basename($path);
+        }
+        $post->save();
+        return redirect()->route('post.index');
     }
 
     public function show()
     {
-        return view('admin.demodetail');
+        return view('admin.detail');
     }
+
+    // public function like($id)
+    // {
+    //     Like::create([
+    //         'post_id' => $id,
+    //         'user_id' => Auth::id()
+    //     ]);
+
+    //     return redirect()->route('');
+    // }
+
+    // public function unlike($id)
+    // {
+    //     $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+    //     $like->delete();
+
+    //     return redirect()->route('');
+    // }
 }
