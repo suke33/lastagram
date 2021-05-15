@@ -47,7 +47,7 @@ Route::get('/user/detail', [PostController::class, 'show'])->name('user.detail')
 
 
 
- //マークアップ用のルーティング
+//  マークアップ用のルーティング
 //  Route::get('/mark/posts', function() {
 //      return view('admin.home');
 //  });
