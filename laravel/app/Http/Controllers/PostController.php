@@ -59,14 +59,14 @@ class PostController extends Controller
         return view('admin.detail');
     }
 
-    // public function like($id)
+    // public function like(Post $post)
     // {
-    //     Like::create([
-    //         'post_id' => $id,
-    //         'user_id' => Auth::id()
-    //     ]);
+    //     $like = new Like;
+    //     $like->user_id = Auth::user()->id;
+    //     $like->post_id = $post->id;
+    //     $like->save();
 
-    //     return redirect()->route('');
+    //     return redirect()->back();
     // }
 
     // public function unlike($id)

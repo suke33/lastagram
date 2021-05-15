@@ -104,7 +104,7 @@
                                 <i class="far fa-heart"></i>
                             </div>
                             <div>
-                                <p>100<span>いいね</span></p>
+                                <p>{{ $user->like->count() }}<span>いいね</span></p>
                             </div>
                         </div>
                         <div class="comment">

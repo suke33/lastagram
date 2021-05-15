@@ -64,9 +64,9 @@
                             </div>
                         </div>
                         <label>
-                        <div class="file2"></div>
-                        {{ Form::file('image', ['name' => 'image', 'class' => 'img-file', 'accept' => 'image/png']) }}
-</label>
+                            <div class="file2"></div>
+                            {{ Form::file('image', ['name' => 'image', 'class' => 'img-file', 'accept' => 'image/png']) }}
+                        </label>
                         <!-- <a href=""><img src="{{ asset('image/create-img.png') }}" alt="投稿する写真" class="photo"></a> -->
                         {{ Form::text('comment', null, ['class' => 'comment', 'placeholder' => 'コメントを入力…'])}}
                         <!-- <div class="comment">
