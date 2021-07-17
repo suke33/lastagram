@@ -7,7 +7,11 @@ html a:hover {
   opacity: 0.5;
 }
 
-h1, h2, p, span, table {
+h1,
+h2,
+p,
+span,
+table {
   font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", "verdana", sans-serif;
 }
 
@@ -67,11 +71,11 @@ header ul li:last-child {
     -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
   }
-  header nav h1 img {
-    width: 550px;
-  }
   header nav ul li:first-child {
     margin-right: 40%;
+  }
+  header nav h1 img {
+    width: 550px;
   }
 }
 
@@ -167,44 +171,49 @@ header ul li:last-child {
     border-left: 10px #32AC4F solid;
     max-height: 195px;
   }
-  .profile-pc .post-count th:last-child {
-    padding-right: 5%;
-  }
   .profile-pc .follow-count {
     border-left: 10px #FAED33 solid;
-  }
-  .profile-pc .follow-count td:last-child {
-    padding-right: 6%;
   }
   .profile-pc .follower-count {
     border-left: 10px #DB2F2D solid;
   }
-  .profile-pc .follower-count td:last-child {
-    padding-right: 6%;
-  }
   .profile-pc .post-prof {
     border-radius: 15px;
   }
-  .profile-pc .post .post-prof {
+  .post .post-prof {
     border-radius: 6px 6px 0 0;
+  }
+  .profile-pc .post-count th:last-child {
+    padding-right: 5%;
+  }
+  .profile-pc .follow-count td:last-child,
+  .profile-pc .follower-count td:last-child {
+    padding-right: 6%;
   }
 }
 
 /*プロフィール スマホ*/
+.profile-sp {
+  background-color: #fff;
+  padding: 30px 0;
+}
+
+.profile-sp ul {
+  color: #8E8E8E;
+}
+
+.profile-sp .bold,
+.popup_wrap .bold {
+  font-weight: 800;
+}
+
+.profile-sp .black {
+  color: #020202;
+  font-weight: 800;
+}
+
 @media (max-width: 767px) {
-  .profile-sp {
-    background-color: #fff;
-    padding: 30px 0;
-  }
-  .profile-sp .black {
-    color: #020202;
-    font-weight: 800;
-  }
-  .profile-sp .bold {
-    font-weight: 800;
-  }
   .profile-sp ul {
-    color: #8E8E8E;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -238,6 +247,26 @@ header ul li:last-child {
 }
 
 /*投稿　ヘッダー*/
+.post-icon {
+  margin: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.post i {
+  font-size: 2em;
+}
+
+.post i:hover {
+  cursor: pointer;
+}
+
 .post .post-prof {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -252,7 +281,11 @@ header ul li:last-child {
   width: 100%;
 }
 
-.post .post-img {
+.photo {
+  width: 100%;
+}
+
+.post-img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -261,43 +294,14 @@ header ul li:last-child {
           align-items: center;
 }
 
-.post .post-img img {
+.post-img img {
   border-radius: 50%;
   max-width: 70px;
   margin-left: 2%;
   margin-right: 10%;
 }
 
-.post i {
-  font-size: 2em;
-}
-
-.post i:hover {
-  cursor: pointer;
-}
-
-.post .photo {
-  width: 100%;
-}
-
-.post .comment {
-  background: #fff;
-  padding: 1%;
-  margin: 2%;
-}
-
-.post-icon {
-  margin: 2%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  white-space: nowrap;
-  color: #fff;
-}
-
+/*投稿　中身*/
 .post-icon div:first-child {
   margin-right: 3%;
 }
@@ -308,6 +312,12 @@ header ul li:last-child {
 
 .post-icon div p span {
   margin-left: 8px;
+}
+
+.post .comment {
+  background: #fff;
+  padding: 1%;
+  margin: 2%;
 }
 
 @media (min-width: 767px) {
@@ -326,23 +336,19 @@ header ul li:last-child {
     border-top: 10px solid #020202;
     border-bottom: 10px solid #020202;
   }
-  .main {
-    width: 100%;
-  }
 }
 
 /*ポップアップ*/
 .popup-wrap .bold {
   border-bottom: 1px #707070 solid;
   margin: 15px 0;
-  font-weight: 800;
 }
 
 .popup-wrap input {
   display: none;
 }
 
-.popup-wrap .popup-overlay {
+.popup-overlay {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -366,13 +372,13 @@ header ul li:last-child {
           transform: scale(0);
 }
 
-.popup-wrap .popup-trigger {
+.popup-trigger {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.popup-wrap .popup-content {
+.popup-content {
   position: relative;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -389,7 +395,7 @@ header ul li:last-child {
   text-align: justify;
 }
 
-.popup-wrap .close-btn {
+.close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -400,7 +406,7 @@ header ul li:last-child {
   font-weight: bold;
 }
 
-.popup-wrap .close-btn i {
+.close-btn i {
   color: #020202;
 }
 
@@ -417,7 +423,7 @@ header ul li:last-child {
           transform: translateY(50px);
 }
 
-.popup-wrap .open-btn {
+.open-btn {
   position: relative;
   top: 0;
   right: 0;
@@ -434,7 +440,7 @@ header ul li:last-child {
           align-items: center;
 }
 
-.popup-wrap .delete-btn {
+.delete-btn {
   color: #DB2F2D;
 }
 /*# sourceMappingURL=style.css.map */
