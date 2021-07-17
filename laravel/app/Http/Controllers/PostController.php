@@ -15,7 +15,7 @@ class PostController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-            return view('admin.home', compact('user', 'posts'));
+            return view('admin.index', compact('user', 'posts'));
         } else {
             return view('auth.login');
         }
@@ -58,22 +58,4 @@ class PostController extends Controller
     {
         return view('admin.detail');
     }
-
-    // public function like(Post $post)
-    // {
-    //     $like = new Like;
-    //     $like->user_id = Auth::user()->id;
-    //     $like->post_id = $post->id;
-    //     $like->save();
-
-    //     return redirect()->back();
-    // }
-
-    // public function unlike($id)
-    // {
-    //     $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
-    //     $like->delete();
-
-    //     return redirect()->route('');
-    // }
 }

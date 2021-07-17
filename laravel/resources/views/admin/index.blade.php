@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ asset('js/script.js') }}"></script>
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>lastagram</title>
 </head>
 
@@ -27,7 +28,7 @@
                     <!----- プロフィール詳細画面へ ----->
                     <li><a href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i></a></li>
                     <!----- ログアウト ----->
-                
+
                 </ul>
             </nav>
         </header>
@@ -70,7 +71,7 @@
                     <div class="post">
                         <div class="post-prof">
                             <div class="post-img">
-                                
+
                                 <img src="{{ asset('images/prof-dummy.png') }}">
                                 <h2>{{$user->name}}</h2>
                             </div>
@@ -83,7 +84,7 @@
                                         <div class="popup-content">
                                             <label for="trigger" class="close-btn"><i class="fas fa-times"></i></label>
                                             <p class="bold">本当にこの投稿を削除しますか？</p>
-                                            <form action="{{route('post.destroy', ['id' => $post->id])}}" method="POST">
+                                            <form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit">
@@ -97,20 +98,17 @@
                                 <label for="trigger" class="open-btn"><i class="far fa-trash-alt"></i></label>
                             </div>
                         </div>
-                        <img src="{{ asset('storage/images/'.$post->image) }}" alt="投稿した写真" class="photo"> 
+                        <img src="{{ asset('storage/images/'.$post->image) }}" alt="投稿した写真" class="photo">
                         <div class="post-icon">
                             <!----- いいねボタン ----->
-                            <div class="like">
-                                <i class="far fa-heart"></i>
-                            </div>
                             <div>
-                                <p>{{ $user->like->count() }}<span>いいね</span></p>
+                                <p>100<span>いいね</span></p>
                             </div>
                         </div>
                         <div class="comment">
-                            <p>{{$post->comment}}</p>
+                            <p>{{ $post->comment }}</p>
                         </div>
-                        
+
                     </div>
                     <!----- 投稿ここまで ----->
                 </div>
@@ -122,6 +120,10 @@
         <!----- メインコンテンツ END ----->
 
     </main>
-</body>
 
+    @section('js')
+    <script>
+    </script>
+    @endsection
+</body>
 </html>
