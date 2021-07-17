@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}" type="text/css">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ asset('js/script.js') }}"></script>
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>lastagram</title>
 </head>
 
@@ -18,13 +19,16 @@
             <nav>
                 <ul>
                     <li>
-                        <h1><a href=""><img src="{{ asset('image/logo.svg') }}" alt="lastagram" class="logo"></a></h1>
+                        <h1><a href=""><img src="{{ asset('images/logo.svg') }}" alt="lastagram" class="logo"></a></h1>
                     </li>
                     <!----- ホーム画面 ----->
                     <li><a href="{{route('post.create')}}"><i class="fas fa-plus-square"></i></a></li>
                     <!----- 新規投稿画面へ ----->
                     <li><a href="{{route('user.detail')}}"><i class="fas fa-user"></i></a></li>
                     <!----- プロフィール詳細画面へ ----->
+                    <li><a href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i></a></li>
+                    <!----- ログアウト ----->
+
                 </ul>
             </nav>
         </header>
@@ -35,7 +39,7 @@
             <!----- プロフィール 大きい画面幅 ----->
             <div class="profile-pc">
                 <div class="post-prof">
-                    <img src="{{ asset('image/prof-dummy.png') }}">
+                    <img src="{{ asset('images/prof-dummy.png') }}">
                     <h2>{{$user->name}}</h2>
                 </div>
                 <table class="count">
@@ -58,34 +62,17 @@
             </div>
             <!----- プロフィール END ----->
 
-            <!----- プロフィール 小さい画面幅 ----->
-            <div class="profile-sp">
-                <div class="count">
-                    <ul>
-                        <li>
-                            <p><span class="bold">投稿</span><br class="sp"><span class="black">100</span><br class="sp"></span>件</p>
-                        </li>
-                        <li>
-                            <p><span class="bold">フォロー中</span><br class="sp"><span class="black">100</span><br class="sp">人</p>
-                        </li>
-                        <li>
-                            <p><span class="bold">フォロワー</span><br class="sp"><span class="black">100</span><br class="sp">人</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!----- プロフィール END ----->
-
+            <div class="main">
             <!----- 投稿 ----->
+            @foreach($posts as $post)
             <div id="post">
                 <div class="post-wrapper">
                     <!----- 投稿ここから ----->
                     <div class="post">
                         <div class="post-prof">
                             <div class="post-img">
-                                @foreach($posts as $post)
-                                <img src="{{$post->image}}">
+
+                                <img src="{{ asset('images/prof-dummy.png') }}">
                                 <h2>{{$user->name}}</h2>
                             </div>
                             <div>
@@ -97,7 +84,7 @@
                                         <div class="popup-content">
                                             <label for="trigger" class="close-btn"><i class="fas fa-times"></i></label>
                                             <p class="bold">本当にこの投稿を削除しますか？</p>
-                                            <form action="{{route('post.destroy', ['id' => $post->id])}}" method="POST">
+                                            <form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit">
@@ -111,38 +98,32 @@
                                 <label for="trigger" class="open-btn"><i class="far fa-trash-alt"></i></label>
                             </div>
                         </div>
-                        <img src="{{ asset('image/post-dummy.png') }}" alt="投稿した写真" class="photo">
+                        <img src="{{ asset('storage/images/'.$post->image) }}" alt="投稿した写真" class="photo">
                         <div class="post-icon">
                             <!----- いいねボタン ----->
-                            <div class="like">
-                                <i class="far fa-heart"></i>
-                            </div>
                             <div>
                                 <p>100<span>いいね</span></p>
                             </div>
                         </div>
                         <div class="comment">
-                            <p>{{$post->comment}}</p>
+                            <p>{{ $post->comment }}</p>
                         </div>
-                        @endforeach
+
                     </div>
                     <!----- 投稿ここまで ----->
                 </div>
             </div>
+            @endforeach
             <!----- 投稿 END ----->
+            </div>
         </article>
         <!----- メインコンテンツ END ----->
 
-        <!-- ログアウト処理の一時保管↓　-->
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                        this.closest('form').submit();">
-                {{ __('Logout') }}
-            </x-jet-dropdown-link>
-        </form>
-
     </main>
-</body>
 
+    @section('js')
+    <script>
+    </script>
+    @endsection
+</body>
 </html>

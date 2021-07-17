@@ -15,7 +15,7 @@ class PostController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-            return view('admin.home', compact('user', 'posts'));
+            return view('admin.index', compact('user', 'posts'));
         } else {
             return view('auth.login');
         }
@@ -30,11 +30,32 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.democreate');
+        return view('admin.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'image' => 'required',
+            'comment' => 'required|max:500',
+            'image' => 'required',
+        ]);
+
+        $post = new Post;
+        $post->user_id = Auth::user()->id;
+        $post->image = $request->image;
+        $post->comment = $request->comment;
+        $post->image = $request->image;
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/images');
+            $post->image = basename($path);
+        }
+        $post->save();
+        return redirect()->route('post.index');
     }
 
     public function show()
     {
-        return view('admin.demodetail');
+        return view('admin.detail');
     }
 }

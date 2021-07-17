@@ -22,6 +22,7 @@ ul li {
 body h2 {
     font-weight: 800;
     font-size: 1.3em;
+    white-space: nowrap;
 }
 
 @media (min-width:767px) {
@@ -56,8 +57,11 @@ header ul li i {
     font-size: 2em;
 }
 
-header ul li:last-child {
-    margin-left: 3%;
+header ul li {
+    margin-right: 3%;
+}
+header ul li:last-child{
+    margin-right: 0;
 }
 
 @media (max-width:767px) {
@@ -96,25 +100,17 @@ header ul li:last-child {
     }
 }
 
-@media (max-width:767px) {
-    .profile-pc {
-        display: none;
-    }
-}
 
 
 /*プロフィール PC*/
 
 .profile-pc {
     order: 1;
-    position: -webkit-sticky;
-    position: sticky;
     top: 0;
     background-color: #fff;
     border-radius: 15px 15px 0 0;
     margin-left: 5%;
     width: 33%;
-    height: auto;
     white-space: nowrap;
 }
 
@@ -155,8 +151,12 @@ header ul li:last-child {
     .profile-pc tr:last-child {
         border-bottom: 0;
     }
+    .profile-pc .count {
+        max-height:195px;
+    }
     .profile-pc .post-count {
         border-left: 10px #32AC4F solid;
+        max-height:195px;
     }
     .profile-pc .follow-count {
         border-left: 10px #FAED33 solid;
@@ -221,8 +221,8 @@ header ul li:last-child {
 
 /*投稿*/
 
-#post {
-    width: 100%;
+.main {
+    width: 72%;
 }
 
 .post {

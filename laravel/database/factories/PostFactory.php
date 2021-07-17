@@ -23,9 +23,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'comment' => $this->faker->text(120),
-            'image' => asset('image/testimage.jpg')
+            'user_id' => User::inRandomOrder()->first()->id,
+            'comment' => $this->faker->realText(200),
+            'image' => 'testimage.png',
         ];
     }
 }
